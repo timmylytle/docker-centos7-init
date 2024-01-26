@@ -22,7 +22,7 @@ jobs:
         run: docker build -t docker-centos7-init .
 
       - name: Run the built image.
-        run: docker run --name container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw docker-centos=init
+        run: docker run --name container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw docker-centos7-init
 
       - name: Verify systemd is active on container.
         run: docker exec container systemctl status
