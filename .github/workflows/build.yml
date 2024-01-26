@@ -1,13 +1,13 @@
 ---
 name: Build
 
-on:
+'on':
   pull_request:
   push:
     branches:
       - master
-  # schedule:
-  #   - cron: "10 2 * * 0"
+    paths-ignore:
+      - '**.md'
 
 jobs:
   # Test the image builds and works correctly.
