@@ -13,7 +13,7 @@ jobs:
   # Test the image builds and works correctly.
   test:
     name: Test
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - uses: actions/checkout@v4
@@ -35,7 +35,7 @@ jobs:
     if: github.ref == 'refs/heads/master'
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - uses: docker/setup-qemu-action@v1
       - uses: docker/setup-buildx-action@v1
 
