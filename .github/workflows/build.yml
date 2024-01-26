@@ -19,13 +19,13 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Test building image.
-        run: docker build -t centos7-init .
+        run: docker build -t instance .
 
       - name: Run the built image.
-        run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:ro centos7-init
+        run: docker run --name test-container -d --privileged -v /sys/fs/cgroup:/sys/fs/cgroup:rw instance
 
-      - name: Verify Ansible is accessible in the built image.
-        run: docker exec --tty test-container env TERM=xterm systemctl status
+      - name: Verify systemd is active on container.
+        run: docker exec instance systemctl status
 
   # If on master branch, build and release image.
   release:
